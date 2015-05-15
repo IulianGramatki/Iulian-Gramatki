@@ -69,7 +69,7 @@ for j=1:t       %loop over periods
             if a(x+2,y+2)==1-a(x+1,y+1) 
                 move=move+1;
             end
-            if move>=3      %start the moving process
+            if move>=4      %start the moving process
                 new=unused(1);      %pick an unoccupied house
                 newx=floor((new+14)/15);
                 newy=mod(new,15)+1;     %transform into 2D coordinates
