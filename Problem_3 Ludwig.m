@@ -18,7 +18,7 @@ title(['initial distribution']);
 
 
 %% Step 2: Dynamics
-racism = 0.35;
+racism = 0.5;
 numplot = 1;
 for niter = 1:45;
     mover = [];     % the matrix mover includes all indices of people that are looking for a new house
