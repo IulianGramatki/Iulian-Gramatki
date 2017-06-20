@@ -5,7 +5,7 @@ library(readxl)
 library(lubridate)
 
 rm(list=ls())
-setwd("C:/Tech/Rcourse-1-4")
+setwd("E:/Tech/Rcourse-1-4")
 data<-read_csv("daily_SPEC_2014.csv.bz2")
 
 #Change spaces in variable names to dots
@@ -56,9 +56,10 @@ data <- data %>%
   mutate(State.Code = as.double(State.Code), County.Code= as.double(County.Code), Site.Num = as.double(Site.Num))
 data2 <- full_join(data,meta) #,by=c("State.Code","County.Code","Site.Num")
 data2 %>% 
-  filter(Land.Use=="RESIDENTIAL",Location.Setting=="SUBURBAN",Longitude>=(-100),Parameter.Name == "EC PM2.5 LC TOR") %>%
-  select(State.Code,County.Code,Site.Num,Parameter.Name,Arithmetic.Mean,Land.Use,Location.Setting,Longitude) %>%
-  arrange(desc(Arithmetic.Mean)) %>%
+  filter(Land.Use=="RESIDENTIAL", Location.Setting=="SUBURBAN",
+         Longitude>=(-100), Parameter.Name == "EC PM2.5 LC TOR") %>%
+  select(State.Code,County.Code,Site.Num,Parameter.Name,Arithmetic.Mean,Land.Use,Location.Setting,Longitude,Date.Local) %>%
+  summarise(median=median(Arithmetic.Mean))
 
 #Question 8
 data2 <- data2 %>%
